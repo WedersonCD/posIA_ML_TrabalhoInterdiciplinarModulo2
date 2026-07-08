@@ -1,1 +1,6 @@
 .aws/*
+airflow/logs/*
+__pycache__/
+*.py[cod]
+airflow/dags/__pycache__/*
+data/ifg/unstructured/*
