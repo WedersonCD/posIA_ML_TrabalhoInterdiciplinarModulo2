@@ -71,7 +71,7 @@ def create_lambda_zip_with_dependencies(lambda_file_path: str) -> bytes:
 )
 def aws_envsetup():
     aws_conn_id='AWS_LAB'
-    aws_account_role="arn:aws:iam::619893207681:role/LabRole"
+    aws_account_role="arn:aws:iam::297686644875:role/LabRole"
 
     s3_athenaLog_bucket="cluster-paper-ifg-athena-log"
 
