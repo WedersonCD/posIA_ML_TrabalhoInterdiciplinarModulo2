@@ -1,0 +1,87 @@
+{"data":{"log_version":3,"version":"=2.0.0-preview.196"},"info":{"category":"","code":"A001","extra":{},"invocation_id":"019f465e-2868-7673-8d12-2a1916881887","level":"info","msg":"Running with dbt-fusion=2.0.0-preview.196","name":"MainReportVersion","pid":22760,"thread":"tokio-rt-worker","ts":"2026-07-09T10:13:23.692949Z"}}
+{"data":{"args":{"debug":"false","invocation_command":"C:\\Users\\jiray\\.local\\bin\\dbt.exe license info --json --log-format json","log_format":"json","quiet":"false","write_json":"true"}},"info":{"category":"","code":"A002","extra":{},"invocation_id":"019f465e-2868-7673-8d12-2a1916881887","level":"debug","msg":"running dbt-fusion with arguments {\"command\":\"license\",\"vars\":\"{}\",\"limit\":\"10\",\"debug\":false,\"log_format\":\"json\",\"quiet\":false,\"write_json\":true,\"write_catalog\":false,\"manage_state\":false}","name":"MainReportArgs","pid":22760,"thread":"tokio-rt-worker","ts":"2026-07-09T10:13:23.692977Z"}}
+{"data":{},"info":{"category":"","code":"","extra":{},"invocation_id":"019f465e-2868-7673-8d12-2a1916881887","level":"debug","msg":"No platform credentials found, skipping remote license","name":"Generic","pid":22760,"thread":"tokio-rt-worker","ts":"2026-07-09T10:13:23.709785Z"}}
+{"data":{},"info":{"category":"","code":"","extra":{},"invocation_id":"019f465e-2868-7673-8d12-2a1916881887","level":"debug","msg":"License loaded from file C:\\Users\\jiray\\.dbt\\license.trial","name":"Generic","pid":22760,"thread":"tokio-rt-worker","ts":"2026-07-09T10:13:26.863505Z"}}
+{"data":{"columns":[],"is_inline":true,"node_name":"license_info","output_format":"json","preview":"{\n  \"status\": \"valid\",\n  \"licensing_enabled\": true,\n  \"features\": [\n    \"compare\",\n    \"strict-static-analysis\"\n  ],\n  \"issued_at\": \"2026-07-09T10:11:27+00:00\",\n  \"expires_at\": \"2026-07-23T10:11:19+00:00\",\n  \"license_type\": \"trial\",\n  \"machine_id\": \"3f92aae1f610a98aad508805dd2c34e9a228c35696458559025ab8db86e78b26\",\n  \"days_remaining\": 13,\n  \"trial_start_date\": \"2026-07-09T10:11:19+00:00\"\n}","unique_id":"license.info"},"info":{"category":"","code":"Q041","extra":{},"invocation_id":"019f465e-2868-7673-8d12-2a1916881887","level":"info","msg":"{\n  \"status\": \"valid\",\n  \"licensing_enabled\": true,\n  \"features\": [\n    \"compare\",\n    \"strict-static-analysis\"\n  ],\n  \"issued_at\": \"2026-07-09T10:11:27+00:00\",\n  \"expires_at\": \"2026-07-23T10:11:19+00:00\",\n  \"license_type\": \"trial\",\n  \"machine_id\": \"3f92aae1f610a98aad508805dd2c34e9a228c35696458559025ab8db86e78b26\",\n  \"days_remaining\": 13,\n  \"trial_start_date\": \"2026-07-09T10:11:19+00:00\"\n}","name":"ShowNode","pid":22760,"thread":"tokio-rt-worker","ts":"2026-07-09T10:13:27.871199Z"}}
+{"data":{"completed_at":"2026-07-09T10:13:28.031856Z","elapsed":4.339073181152344,"success":true},"info":{"category":"","code":"Q039","extra":{},"invocation_id":"019f465e-2868-7673-8d12-2a1916881887","level":"info","msg":"\n==================== Execution Summary =====================\nFinished 'license' successfully [4.3s]","name":"CommandCompleted","pid":22760,"thread":"tokio-rt-worker","ts":"2026-07-09T10:13:28.032036Z"}}
+==================== 2026-07-09T10:22:57.168876Z | 019f4666-e884-7d00-9284-075d494aae84 ====================
+10:22:57.169057 [info ]: Installing dbt project and profile setup
+10:22:57.388101 [info ]: Info Created .vscode/extensions.json with dbt extension recommendation
+10:22:57.393695 [info ]: Success Project created successfully!
+10:22:57.398870 [info ]: Info Project name: jaffle_shop
+10:22:57.402859 [info ]: Info Project directory: jaffle_shop
+10:22:57.404202 [info ]: Info Setting up your profile...
+10:22:57.410698 [info ]: Info Creating new profile...
+10:23:01.048376 [info ]: No dbt_cloud.yml found - proceeding without cloud pre-population
+10:30:21.525466 [info ]: Success Profile written to C:\Users\jiray\.dbt\profiles.yml
+10:30:21.527173 [info ]: Validating profile inputs, adapters, and connection
+
+10:30:21.528325 [info ]: dbt-fusion 2.0.0-preview.196
+10:30:21.529623 [info ]: Started loading project
+10:30:21.533277 [info ]: Loading ~/.dbt/profiles.yml
+10:30:21.535418 [info ]: Finished loading project [  0.01s]
+10:30:21.535879 [info ]: Started debugging
+10:30:21.536111 [info ]: Debugging profile: dev
+10:30:21.538155 [info ]: Debugging dbt version: 2.0.0-preview.196
+10:30:21.541285 [info ]: Debugging platform: windows x86_64 (windows)
+10:30:21.544988 [info ]: Debugging adapter type: databricks (remote)
+10:30:21.691865 [info ]: Debugging dependencies:
+  git: OK
+10:30:21.700931 [info ]: Debugging connection:
+  "schema": "bronze",
+  "host": "dbc-3aeb3e26-c66b.cloud.databricks.com",
+  "http_path": "/sql/1.0/warehouses/6627704dfad477dc"
+10:30:39.883815 [debug]: Query executed on node unknown:
+select 1 as id
+10:30:39.884013 [info ]: Debugging connection test: OK
+10:30:39.890378 [info ]: Debugged All checks passed!
+10:30:39.893562 [info ]: Finished debugging [ 18.36s]
+10:30:59.732724 [info ]: 
+==================== Execution Summary =====================
+Finished 'init' successfully for target 'dev' [8m 3s]
+==================== 2026-07-09T15:01:30.813189Z | 019f4765-f02f-7203-a945-98f4d4a91ed7 ====================
+15:01:30.813301 [info ]: Installing dbt project and profile setup
+15:01:30.854679 [info ]: Warning Directory 'jaffle_shop' already exists, using 'jaffle_shop_1' instead
+15:01:31.118381 [info ]: Info Created .vscode/extensions.json with dbt extension recommendation
+15:01:31.132564 [info ]: Success Project created successfully!
+15:01:31.146236 [info ]: Info Project name: jaffle_shop_1
+15:01:31.162619 [info ]: Info Project directory: jaffle_shop_1
+15:01:31.177301 [info ]: Info Setting up your profile...
+15:01:31.192544 [info ]: Loading ~/.dbt/profiles.yml
+15:01:31.206274 [info ]: Info Creating new profile...
+==================== 2026-07-09T15:03:47.982186Z | 019f4768-0800-7b60-872d-1cdfafa0ad81 ====================
+15:03:47.982378 [info ]: Installing dbt project and profile setup
+15:03:48.189030 [info ]: Info Created .vscode/extensions.json with dbt extension recommendation
+15:03:48.195483 [info ]: Success Project created successfully!
+15:03:48.199100 [info ]: Info Project name: clusterpaperifg
+15:03:48.203694 [info ]: Info Project directory: clusterpaperifg
+15:03:48.209785 [info ]: Info Setting up your profile...
+15:03:48.214571 [info ]: Loading ~/.dbt/profiles.yml
+15:03:48.220242 [info ]: Info Creating new profile...
+15:03:49.672214 [info ]: No dbt_cloud.yml found - proceeding without cloud pre-population
+15:04:41.288059 [info ]: Success Profile written to C:\Users\jiray\.dbt\profiles.yml
+15:04:41.290744 [info ]: Validating profile inputs, adapters, and connection
+
+15:04:41.292238 [info ]: dbt-fusion 2.0.0-preview.196
+15:04:41.292547 [info ]: Started loading project
+15:04:41.294065 [info ]: Loading ~/.dbt/profiles.yml
+15:04:41.295301 [info ]: Finished loading project [  0.00s]
+15:04:41.295691 [info ]: Started debugging
+15:04:41.295818 [info ]: Debugging profile: dev
+15:04:41.296121 [info ]: Debugging dbt version: 2.0.0-preview.196
+15:04:41.296323 [info ]: Debugging platform: windows x86_64 (windows)
+15:04:41.296504 [info ]: Debugging adapter type: databricks (remote)
+15:04:41.414797 [info ]: Debugging dependencies:
+  git: OK
+15:04:41.415653 [info ]: Debugging connection:
+  "schema": "bronze",
+  "host": "dbc-3aeb3e26-c66b.cloud.databricks.com",
+  "http_path": "/sql/1.0/warehouses/6627704dfad477dc"
+15:04:55.601362 [debug]: Query executed on node unknown:
+select 1 as id
+15:04:55.601488 [info ]: Debugging connection test: OK
+15:04:55.602289 [info ]: Debugged All checks passed!
+15:04:55.602823 [info ]: Finished debugging [ 14.31s]
+15:04:56.731997 [info ]: 
+==================== Execution Summary =====================
+Finished 'init' successfully for target 'dev' [1m 9s]

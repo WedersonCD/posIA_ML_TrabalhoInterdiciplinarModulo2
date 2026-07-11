@@ -1,0 +1,31 @@
+version: 2
+
+sources:
+  - name: bronze
+    schema: bronze
+    tables:
+      - name: base_docentes_ifg
+  
+      - name: papers_metadata_2015_2016
+
+      - name: papers_metadata_2017_2018
+
+      - name: papers_metadata_2019_2020
+
+      - name: papers_metadata_2021_2022
+
+      - name: papers_metadata_2023_2024
+
+      - name: papers_metadata_2025_2026
+
+      - name: papers_tableofcontent_2015_2016
+
+      - name: papers_tableofcontent_2017_2018
+
+      - name: papers_tableofcontent_2019_2020
+
+      - name: papers_tableofcontent_2021_2022
+
+      - name: papers_tableofcontent_2023_2024
+
+      - name: papers_tableofcontent_2025_2026
