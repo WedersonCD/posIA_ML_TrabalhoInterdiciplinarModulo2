@@ -4,6 +4,8 @@ select *, NULL AS `Identificador DOI`,NULL AS `metadata.dc.contributor.referee5`
 UNION
 select * from {{source('bronze', 'papers_metadata_2017_2018')}}
 UNION
+select *, NULL AS `Segundo Orientador` from {{source('bronze', 'papers_metadata_2019_2020')}}
+UNION
 select *, NULL AS `Segundo Orientador` from {{source('bronze', 'papers_metadata_2021_2022')}}
 UNION
 select *, NULL AS `Segundo Orientador` from {{source('bronze', 'papers_metadata_2023_2024')}}
