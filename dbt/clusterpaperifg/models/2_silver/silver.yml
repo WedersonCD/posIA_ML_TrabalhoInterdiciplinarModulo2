@@ -6,6 +6,9 @@ models:
       schema: silver
     description: ta limpo
     columns:
-      - name: disciplina
+      - name: silver_base_docentes_ifg_disciplina
         data_tests:
           - not_null
+      - name: silver_base_docentes_ifg_id
+        data_tests:
+          - unique
