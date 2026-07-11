@@ -7,11 +7,20 @@ clean-targets:
   - "target"
   - "dbt_packages"
 
+vars:
+  stage_papers_year: "2019_2020"
+
 models:
   clusterpaperifg:
     +file_format: delta
     # Materialize staging models as views, and marts as tables
+    0_stage:
+      +schema: stage
+      +materialized: table
+      +tags: ["stage"]
+
     1_bronze:
+      +schema: bronze
       +materialized: view
       +tags: ["bronze"]
 
