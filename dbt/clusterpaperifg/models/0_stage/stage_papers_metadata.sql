@@ -3,15 +3,15 @@
 
 {{ config(materialized='table') }}
 
-DROP TABLE IF EXISTS clusterpaperifg.bronze.{{ papers_table }};
+DROP TABLE IF EXISTS {{ papers_table }};
 
-CREATE TABLE clusterpaperifg.bronze.{{ papers_table }}
+CREATE TABLE {{ papers_table }}
 USING DELTA
 TBLPROPERTIES (
   'delta.columnMapping.mode' = 'name'
 );
 
-COPY INTO clusterpaperifg.bronze.{{ papers_table }}
+COPY INTO {{ papers_table }}
 FROM 's3://cluster-paper-ifg/Metadata/'
 WITH (
   CREDENTIAL (
