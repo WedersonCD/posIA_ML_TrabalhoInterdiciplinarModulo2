@@ -55,7 +55,7 @@ def aws_crawlerUnstructuredData_full():
         task_id="trigger_crawlerUnstructuredData",
         trigger_dag_id="crawlerUnstructuredData",
         wait_for_completion=True,
-        poke_interval=10,
+        poke_interval=30,
         max_active_tis_per_dag=10,
     ).expand_kwargs(child_confs)
     

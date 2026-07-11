@@ -103,9 +103,12 @@ def crawlerUnstructuredData():
     
     @task
     def build_crawlerTableOfContent_payload(PDF):
+        context     = get_current_context()
+        params      = context["params"]
+
         return json.dumps({
             "paper_id": PDF["id"],
-            "pdf_s3_uri": f"s3://cluster-paper-ifg/{PDF["pdf_s3_key"]}",
+            "pdf_s3_uri": f"s3://{params["aws_bucket_name"]}/{PDF["pdf_s3_key"]}",
             "output_prefix": "TableOfContent"
         })
     

@@ -71,8 +71,8 @@ def create_lambda_zip_with_dependencies(lambda_file_path: str) -> bytes:
 )
 def aws_envsetup():
     aws_conn_id='AWS_LAB'
-    aws_account_role="arn:aws:iam::297686644875:role/LabRole"
-
+    aws_account_role="arn:aws:iam::619893207681:role/LabRole"
+    
     s3_athenaLog_bucket="cluster-paper-ifg-athena-log"
 
     athena_database_name="unstructured"
@@ -83,7 +83,7 @@ def aws_envsetup():
     create_bucket_clusterPaperIFG =    S3CreateBucketOperator(
         aws_conn_id=aws_conn_id,
         task_id="create_bucket_clusterPaperIFG",
-        bucket_name='cluster-paper-ifg'
+        bucket_name='cluster-paper-ifg-1718'
     )
     create_bucket_athenaLog =    S3CreateBucketOperator(
         aws_conn_id=aws_conn_id,
