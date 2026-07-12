@@ -12,3 +12,7 @@ models:
       - name: silver_base_docentes_ifg_id
         data_tests:
           - unique
+  - name: silver_base_papers
+    config:
+      schema: silver
+    description: muitos papeis
