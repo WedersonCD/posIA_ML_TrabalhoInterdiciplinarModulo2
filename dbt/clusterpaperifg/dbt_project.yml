@@ -33,6 +33,12 @@ models:
       +schema: gold
       +materialized: table
       +tags: ["gold"]
+
+      master_dim:
+        +tags: ["master_dim"]
+
+      publishing_analysis:
+        +tags: ["publishing_analysis"]
     
 snapshots:
   clusterpaperifg:

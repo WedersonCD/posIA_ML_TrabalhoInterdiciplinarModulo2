@@ -4,6 +4,9 @@ models:
   - name: gold_master_dim_calendar
     config:
       schema: gold
+      tags: ["master_dim"]
+
   - name: gold_master_dim_docente
     config:
       schema: gold
+      tags: ["master_dim"]

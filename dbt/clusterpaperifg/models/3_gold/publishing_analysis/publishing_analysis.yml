@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - name: gold_datamart_publishing_analysis_dim_publish_calendar
+  - name: gold_datamart_publishing_analysis_dim_orientador
+  - name: gold_datamart_publishing_analysis_fact
