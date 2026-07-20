@@ -1,85 +1,131 @@
+x-airflow-common:
+  &airflow-common
+
+  build:
+    context: .
+    dockerfile: Dockerfile
+
+  image: airflow-dbt:latest-python3.12
+
+  environment:
+    &airflow-common-env
+
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}@postgres/airflow
+
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+    AIRFLOW__CORE__MAX_MAP_LENGTH: "5000"
+
+    AIRFLOW__CORE__SIMPLE_AUTH_MANAGER_ALL_ADMINS: "True"
+    AIRFLOW__CORE__EXECUTION_API_SERVER_URL: http://airflow-api:8080/execution/
+    AIRFLOW__API_AUTH__JWT_SECRET: ${AIRFLOW_JWT_SECRET:?Set AIRFLOW_JWT_SECRET}
+
+    # Diretórios padrão usados pelos comandos dbt
+    DBT_PROJECT_DIR: /opt/dbt/clusterpaperifg
+    DBT_PROFILES_DIR: /opt/dbt_profiles
+
+  volumes:
+    &airflow-common-volumes
+
+    - ./dags:/opt/airflow/dags
+    - ./logs:/opt/airflow/logs
+    - ./plugins:/opt/airflow/plugins
+
+    # Projeto dbt
+    - ./dbt/clusterpaperifg:/opt/dbt/clusterpaperifg
+
+    # profiles.yml montado como somente leitura
+    - ./dbt/dbt_profiles:/opt/dbt_profiles:ro
+
+
 services:
+
   postgres:
     image: postgres:16
     container_name: airflow-postgres
     restart: unless-stopped
+
     environment:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}
       POSTGRES_DB: airflow
+
     volumes:
       - postgres-db-volume:/var/lib/postgresql/data
+
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "airflow"]
       interval: 10s
       retries: 5
       start_period: 5s
 
+
   airflow-init:
-    image: apache/airflow:3.0.2
+    <<: *airflow-common
+
     container_name: airflow-init
+
     depends_on:
       postgres:
         condition: service_healthy
-    environment: &airflow-common-env
-      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}@postgres/airflow
-      AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
-      AIRFLOW__CORE__MAX_MAP_LENGTH: "5000"
-      AIRFLOW__CORE__SIMPLE_AUTH_MANAGER_ALL_ADMINS: "True"
-      AIRFLOW__CORE__EXECUTION_API_SERVER_URL: http://airflow-api:8080/execution/
-      AIRFLOW__API_AUTH__JWT_SECRET: ${AIRFLOW_JWT_SECRET:?Set AIRFLOW_JWT_SECRET}
-    volumes: &airflow-common-volumes
-      - ./dags:/opt/airflow/dags
-      - ./logs:/opt/airflow/logs
-      - ./plugins:/opt/airflow/plugins
+
     command: bash -c "airflow db migrate"
 
+
   airflow-api:
-    image: apache/airflow:3.0.2
+    <<: *airflow-common
+
     container_name: airflow-api
     restart: unless-stopped
+
     depends_on:
       airflow-init:
         condition: service_completed_successfully
+
     ports:
       - "8080:8080"
-    environment: *airflow-common-env
-    volumes: *airflow-common-volumes
+
     command: api-server
 
+
   airflow-scheduler:
-    image: apache/airflow:3.0.2
+    <<: *airflow-common
+
     container_name: airflow-scheduler
     restart: unless-stopped
+
     depends_on:
       airflow-init:
         condition: service_completed_successfully
-    environment: *airflow-common-env
-    volumes: *airflow-common-volumes
+
     command: scheduler
 
+
   airflow-dag-processor:
-    image: apache/airflow:3.0.2
+    <<: *airflow-common
+
     container_name: airflow-dag-processor
     restart: unless-stopped
+
     depends_on:
       airflow-init:
         condition: service_completed_successfully
-    environment: *airflow-common-env
-    volumes: *airflow-common-volumes
+
     command: dag-processor
 
+
   airflow-triggerer:
-    image: apache/airflow:3.0.2
+    <<: *airflow-common
+
     container_name: airflow-triggerer
     restart: unless-stopped
+
     depends_on:
       airflow-init:
         condition: service_completed_successfully
-    environment: *airflow-common-env
-    volumes: *airflow-common-volumes
+
     command: triggerer
+
 
 volumes:
   postgres-db-volume:

@@ -83,7 +83,7 @@ def aws_envsetup():
     create_bucket_clusterPaperIFG =    S3CreateBucketOperator(
         aws_conn_id=aws_conn_id,
         task_id="create_bucket_clusterPaperIFG",
-        bucket_name='cluster-paper-ifg-1718'
+        bucket_name='cluster-paper-ifg'
     )
     create_bucket_athenaLog =    S3CreateBucketOperator(
         aws_conn_id=aws_conn_id,

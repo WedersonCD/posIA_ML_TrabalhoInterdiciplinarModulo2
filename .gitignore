@@ -4,3 +4,4 @@ __pycache__/
 *.py[cod]
 airflow/dags/__pycache__/*
 data/ifg/unstructured/*
+airflow/.env
